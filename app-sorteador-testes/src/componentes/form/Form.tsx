@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useState } from "react";
 import { useAdicionarParticipante } from "../../state/hook/useAdicionarParticipante";
+import { useMessageError } from "../../state/hook/userMessageError";
 
 const Form = () => {
   const [nome, setNome] = useState("");
@@ -8,6 +9,8 @@ const Form = () => {
   const inputRef = useRef<HTMLFormElement>(null);
 
   const adicionarNaLista = useAdicionarParticipante();
+
+  const messageError = useMessageError();
 
   const adicionarParticipante = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,6 +30,7 @@ const Form = () => {
           onChange={(event) => setNome(event.target.value)}
         />
         <button disabled={!nome}>Adicionar</button>
+        {messageError && <p role={'alert'}>{messageError}</p>}
       </form>
     </>
   );
