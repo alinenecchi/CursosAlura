@@ -1,12 +1,11 @@
 import { atom } from "recoil";
 
 export const listaParticipantesState = atom<string[]>({
-  key: "listaParticipante",
+  key: "listaParticipantesState",
   default: [],
 });
 
-export const errorState = atom<string[]>({
-  key: "errorState",
-  default: [],
+export const erroState = atom<string>({
+  key: "erroState",
+  default: "",
 });
-
